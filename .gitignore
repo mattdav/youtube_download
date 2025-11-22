@@ -30,6 +30,7 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+*.bat
 MANIFEST
 
 # PyInstaller
@@ -159,3 +160,4 @@ cython_debug/
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 poetry.lock
+uv.lock

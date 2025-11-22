@@ -13,16 +13,16 @@ git clone https://github.com/mattdav/youtube_download.git
 
 1) Install dependencies listed in the requirements
 ```bash
-conda env create -f /path/to/environment.yml
+uv sync
 ```
-2) List the urls of the youtube videos you wish to download to "data/music_list.txt" file
+2) List the urls of the youtube videos you wish to download to a text file
 3) Define the path to your music directory to the "config/config.cfg" file
 In case you don't define it or the path you write there is invalid, the songs will be downloaded to your home directory
 4) Launch the program
 ```bash
-python -m /path/to/package
+python /path/to/package/src/youtube_download
 ```
-PS : in case something goes wrong, find more details from the "log/app.log" file
+PS : in case something goes wrong, the GUI will return errors.
 
 ## Contributing
 Pull requests are welcome.
