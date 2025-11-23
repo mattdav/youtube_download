@@ -1,35 +1,90 @@
-# youtube_download
 
-Python package to download music from youtube based on a list of urls.
+# Youtube download
 
-## Installation
+Python package to download youtube music from a list of urls.
 
-Clone the package to your directory
+
+## Authors
+
+- [@mattdav](https://github.com/mattdav)
+
+
+## Badges
+
+Add badges from somewhere like: [shields.io](https://shields.io/)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/yt-dlp)
+
+## Run Locally
+
+Clone the project
+
 ```bash
-git clone https://github.com/mattdav/youtube_download.git
+  git clone https://github.com/mattdav/youtube_download.git
 ```
 
-## Usage
+Go to the project directory
 
-1) Install dependencies listed in the requirements
 ```bash
-uv sync
+  cd path_to_youtube_download
 ```
-2) List the urls of the youtube videos you wish to download to a text file
-3) Define the path to your music directory to the "config/config.cfg" file
-In case you don't define it or the path you write there is invalid, the songs will be downloaded to your home directory
-4) Launch the program
+
+Create virtual env
+
 ```bash
-python /path/to/package/src/youtube_download
+  uv venv
 ```
-PS : in case something goes wrong, the GUI will return errors.
 
-## Contributing
-Pull requests are welcome.
+Install dependencies
 
-## Support
+```bash
+  uv sync
+```
 
-For any question or assistance needed regarding the use of this package, you can contact me at matthieu.daviaud@gmail.com
+Activate venv
 
+```bash
+  .venv\Scripts\activate
+```
+
+Run program
+
+```bash
+  python src\youtube_download
+```
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to a config.cfg file placed in src\youtube_download\config (see config.cfg.example) :
+
+`MUSIC_PATH : path to your music folder`
+
+
+
+
+## Usage/Examples
+
+Place URLs you want to download in a text file : 
+```text
+https://www.youtube.com/watch?v=URL1
+https://www.youtube.com/watch?v=URL2
+https://www.youtube.com/watch?v=URL3
+...
+```
+
+Select the file via the GUI when you start program.
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Acknowledgements
+
+ - [yt-dlp](https://pypi.org/project/yt-dlp/)
+ - [README generator](https://readme.so/fr)
+
+
