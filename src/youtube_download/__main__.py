@@ -1,14 +1,14 @@
 """Main module collecting configuration and lauching the program"""
 
+import importlib.resources
 import logging
 import os
-import importlib.resources
-from bin.utils import validate_url, get_music_path, download_url
-from beartype import beartype
-import tkinter as tk
-from tkinter import filedialog, messagebox
-from tkinter import ttk
 import threading
+import tkinter as tk
+from tkinter import filedialog, messagebox, ttk
+
+from beartype import beartype
+from bin.utils import download_url, get_music_path, validate_url
 
 
 @beartype
@@ -31,7 +31,7 @@ def get_folder_path(foldername: str) -> str:
 
 
 def open_file_dialog():
-    """Ouvre une boite de dialogue pour sélectionner un fichier texte."""
+    """Open a GUI to select the text file containing URLs."""
     file_path = filedialog.askopenfilename(
         title="Sélectionner le fichier à traiter",
         filetypes=[("Fichiers texte", "*.txt"), ("Tous les fichiers", "*.*")],
@@ -47,14 +47,14 @@ def open_file_dialog():
 
 
 def process_urls(urls: list) -> list:
-    """Valide les URLs en s'assurant qu'elles correspondent à des URLs
-    Youtube valides.
+    """
+    Validate if URLs are correct youtube ones and rewrite them if
+    they contain playlist link.
 
-    Args:
-        urls (list): Liste des URLs à valider.
-
-    Returns:
-        list: Liste des URLs valides.
+    :param urls: URLs to process.
+    :type urls: list
+    :return: Correct URLs.
+    :rtype: list
     """
     valid_urls = []
     invalid_urls = []
@@ -71,18 +71,18 @@ def process_urls(urls: list) -> list:
             "Les URLs suivantes ne sont pas valides et seront ignorées :\n"
             + "\n".join(invalid_urls),
         )
-    return valid_urls
+    return list(set(valid_urls))
 
 
 @beartype
 def read_urls_from_file(file_path: str) -> list:
-    """Read file and return list of URLs
+    """
+    Read file and return list of URLs.
 
-    Args:
-        file_path (str): Path to the text file.
-
-    Returns:
-        list: List of URLs.
+    :param file_path: Path to the text file.
+    :type file_path: str
+    :return: List of URLs.
+    :rtype: list
     """
     try:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -96,11 +96,13 @@ def read_urls_from_file(file_path: str) -> list:
 
 
 def download_with_progress(urls: list, music_path: str):
-    """Download URLs and update the progress bar accordingly.
+    """
+    Download URLs and update the progress bar accordingly.
 
-    Args:
-        urls (list): List of URLs to download.
-        music_path (str): Path to the music folder to place downloaded files.
+    :param urls: List of URLs to download.
+    :type urls: list
+    :param music_path: Path to the music folder to place downloaded files.
+    :type music_path: str
     """
     total = len(urls)
     pbar["maximum"] = total
@@ -121,10 +123,11 @@ def download_with_progress(urls: list, music_path: str):
 
 
 def process_downloads(music_path: str):
-    """Start the download process in a separate thread.
+    """
+    Start the download process in a separate thread.
 
-    Args:
-        music_path (str): Path to the music folder to place downloaded files.
+    :param music_path: Path to the music folder to place downloaded files.
+    :type music_path: str
     """
     file_path = getattr(window, "file_path", None)
     if not file_path:

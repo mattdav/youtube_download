@@ -1,13 +1,14 @@
 """Utilities used by the program"""
 
 import configparser
-import os
 import logging
-import yt_dlp
-from pathlib import Path
-from beartype import beartype
-import warnings
+import os
 import re
+import warnings
+from pathlib import Path
+
+import yt_dlp
+from beartype import beartype
 
 warnings.filterwarnings("ignore")
 log = logging.getLogger(__name__)
@@ -21,6 +22,13 @@ def validate_url(url: str) -> bool:
     :type url: str
     :return: True/False
     :rtype: bool
+
+    >>> validate_url("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+    True
+    >>> validate_url("https://www.invalidurl.com/watch?v=dQw4w9WgXcQ")
+    False
+    >>> validate_url("just some random text")
+    False
     """
     pattern = r"https://www.youtube.com/watch\?v=*"
     if re.match(pattern, url):
