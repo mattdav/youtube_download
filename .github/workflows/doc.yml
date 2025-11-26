@@ -47,4 +47,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           BRANCH: gh-pages     # <- Branche sur laquelle seront commités les fichiers
-          FOLDER: build/html/  # <- Dossier contenant notre documentation générée
+          FOLDER: docs/build/html/  # <- Dossier contenant notre documentation générée
