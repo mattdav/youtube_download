@@ -34,7 +34,7 @@ jobs:
       - name: "Install Python dependencies"
         run: |
           pip3 install setuptools
-          pip3 install sphinx sphinx-rtd-theme
+          pip3 install sphinx sphinx-rtd-theme beartype tk yt-dlp
 
       - name: "Build Sphinx Doc"
         run: |
