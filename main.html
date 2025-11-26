@@ -44,7 +44,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Main</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Main</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#src.youtube_download.__main__.download_with_progress"><code class="docutils literal notranslate"><span class="pre">download_with_progress()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#src.youtube_download.__main__.get_folder_path"><code class="docutils literal notranslate"><span class="pre">get_folder_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#src.youtube_download.__main__.open_file_dialog"><code class="docutils literal notranslate"><span class="pre">open_file_dialog()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#src.youtube_download.__main__.process_downloads"><code class="docutils literal notranslate"><span class="pre">process_downloads()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#src.youtube_download.__main__.process_urls"><code class="docutils literal notranslate"><span class="pre">process_urls()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#src.youtube_download.__main__.read_urls_from_file"><code class="docutils literal notranslate"><span class="pre">read_urls_from_file()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">Utilities</a></li>
 </ul>
 
@@ -72,8 +80,95 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="main">
-<h1>Main<a class="headerlink" href="#main" title="Link to this heading"></a></h1>
+  <section id="module-src.youtube_download.__main__">
+<span id="main"></span><h1>Main<a class="headerlink" href="#module-src.youtube_download.__main__" title="Link to this heading"></a></h1>
+<p>Main module collecting configuration and lauching the program</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.youtube_download.__main__.download_with_progress">
+<span class="sig-prename descclassname"><span class="pre">src.youtube_download.__main__.</span></span><span class="sig-name descname"><span class="pre">download_with_progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">music_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.youtube_download.__main__.download_with_progress" title="Link to this definition"></a></dt>
+<dd><p>Download URLs and update the progress bar accordingly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>urls</strong> (<em>list</em>) – List of URLs to download.</p></li>
+<li><p><strong>music_path</strong> (<em>str</em>) – Path to the music folder to place downloaded files.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.youtube_download.__main__.get_folder_path">
+<span class="sig-prename descclassname"><span class="pre">src.youtube_download.__main__.</span></span><span class="sig-name descname"><span class="pre">get_folder_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">foldername</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#src.youtube_download.__main__.get_folder_path" title="Link to this definition"></a></dt>
+<dd><p>Get path to a package directory from its name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>foldername</strong> (<em>str</em>) – Name of the directory</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>e</strong> – If directory doesn’t exist, raise a NameError</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Path to the specified directory</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.youtube_download.__main__.open_file_dialog">
+<span class="sig-prename descclassname"><span class="pre">src.youtube_download.__main__.</span></span><span class="sig-name descname"><span class="pre">open_file_dialog</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.youtube_download.__main__.open_file_dialog" title="Link to this definition"></a></dt>
+<dd><p>Open a GUI to select the text file containing URLs.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.youtube_download.__main__.process_downloads">
+<span class="sig-prename descclassname"><span class="pre">src.youtube_download.__main__.</span></span><span class="sig-name descname"><span class="pre">process_downloads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">music_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.youtube_download.__main__.process_downloads" title="Link to this definition"></a></dt>
+<dd><p>Start the download process in a separate thread.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>music_path</strong> (<em>str</em>) – Path to the music folder to place downloaded files.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.youtube_download.__main__.process_urls">
+<span class="sig-prename descclassname"><span class="pre">src.youtube_download.__main__.</span></span><span class="sig-name descname"><span class="pre">process_urls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">urls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#src.youtube_download.__main__.process_urls" title="Link to this definition"></a></dt>
+<dd><p>Validate if URLs are correct youtube ones and rewrite them if
+they contain playlist link.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>urls</strong> (<em>list</em>) – URLs to process.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Correct URLs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.youtube_download.__main__.read_urls_from_file">
+<span class="sig-prename descclassname"><span class="pre">src.youtube_download.__main__.</span></span><span class="sig-name descname"><span class="pre">read_urls_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#src.youtube_download.__main__.read_urls_from_file" title="Link to this definition"></a></dt>
+<dd><p>Read file and return list of URLs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path to the text file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of URLs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
 

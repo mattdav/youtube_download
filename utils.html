@@ -44,7 +44,12 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="main.html">Main</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilities</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bin.utils.download_url"><code class="docutils literal notranslate"><span class="pre">download_url()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bin.utils.get_music_path"><code class="docutils literal notranslate"><span class="pre">get_music_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bin.utils.validate_url"><code class="docutils literal notranslate"><span class="pre">validate_url()</span></code></a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -71,8 +76,73 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="utilities">
-<h1>Utilities<a class="headerlink" href="#utilities" title="Link to this heading"></a></h1>
+  <section id="module-bin.utils">
+<span id="utilities"></span><h1>Utilities<a class="headerlink" href="#module-bin.utils" title="Link to this heading"></a></h1>
+<p>Utilities used by the program</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="bin.utils.download_url">
+<span class="sig-prename descclassname"><span class="pre">bin.utils.</span></span><span class="sig-name descname"><span class="pre">download_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">video_url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">music_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#bin.utils.download_url" title="Link to this definition"></a></dt>
+<dd><p>Download the song of the youtube video and store it to the music directory
+as defined in the config file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>video_url</strong> (<em>str</em>) – Url of the youtube video</p></li>
+<li><p><strong>music_path</strong> (<em>str</em>) – Path to the user’s music directory</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bin.utils.get_music_path">
+<span class="sig-prename descclassname"><span class="pre">bin.utils.</span></span><span class="sig-name descname"><span class="pre">get_music_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#bin.utils.get_music_path" title="Link to this definition"></a></dt>
+<dd><p>Get the path to the user’s music directory as defined in the config.cfg file
+If the directory doesn’t exist, return the home’s path instead</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config_path</strong> (<em>str</em>) – Path to the config folder where the config.cfg file is located</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>e</strong> – Raise a FileNotFoundError is the config.cfg file doesn’t exist</p></li>
+<li><p><strong>e</strong> – Raise a KeyError if the config.cfg file is not correctly filled</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Return either the path read from the config.cfg file or the home path</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bin.utils.validate_url">
+<span class="sig-prename descclassname"><span class="pre">bin.utils.</span></span><span class="sig-name descname"><span class="pre">validate_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#bin.utils.validate_url" title="Link to this definition"></a></dt>
+<dd><p>Check if the input looks like a valid url from youtube via regex</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>str</em>) – input url wrote in the input file music_list.txt</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True/False</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">validate_url</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/watch?v=dQw4w9WgXcQ&quot;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">validate_url</span><span class="p">(</span><span class="s2">&quot;https://www.invalidurl.com/watch?v=dQw4w9WgXcQ&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">validate_url</span><span class="p">(</span><span class="s2">&quot;just some random text&quot;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 
 
