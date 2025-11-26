@@ -39,7 +39,7 @@ jobs:
       - name: "Build Sphinx Doc"
         run: |
           make html
-        working-directory: Directory_Name/docs
+        working-directory: docs
 
       # 3. Déploiement sur les Github Pages
 
