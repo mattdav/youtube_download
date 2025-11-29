@@ -35,7 +35,7 @@ jobs:
         run: |
           pip3 install uv setuptools
           uv venv --python=3.12
-          .venv\Scripts\activate
+          .venv/Scripts/activate
           uv sync
 
       - name: "Build Sphinx Doc"
