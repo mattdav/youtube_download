@@ -11,7 +11,5 @@ jobs:
       - name: "Install Python dependencies and run ruff lint check"
         run: |
           pip install uv
-          uv venv --python=3.12
-          .venv/bin/activate
           uv sync
           pytest -v

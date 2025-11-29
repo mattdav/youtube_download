@@ -34,8 +34,6 @@ jobs:
       - name: "Install Python dependencies"
         run: |
           pip3 install uv setuptools
-          uv venv --python=3.12
-          .venv/bin/activate
           uv sync
 
       - name: "Build Sphinx Doc"
