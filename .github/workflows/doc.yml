@@ -33,8 +33,8 @@ jobs:
 
       - name: "Install Python dependencies"
         run: |
-          pip3 install setuptools
-          pip3 install sphinx sphinx-rtd-theme beartype tk yt-dlp
+          pip3 install uv
+          uv sync
 
       - name: "Build Sphinx Doc"
         run: |
@@ -46,5 +46,5 @@ jobs:
       - name: "Deploy Github Pages"
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          BRANCH: gh-pages     # <- Branche sur laquelle seront commités les fichiers
-          FOLDER: docs/build/html/  # <- Dossier contenant notre documentation générée
+          branch: gh-pages     # <- Branche sur laquelle seront commités les fichiers
+          folder: docs/build/html/  # <- Dossier contenant notre documentation générée
