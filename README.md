@@ -19,6 +19,11 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 ![YouTube Music](https://img.shields.io/badge/YouTube_Music-FF0000?style=for-the-badge&logo=youtube-music&logoColor=white)
 
+[![Documentation](https://img.shields.io/badge/docs-github.io-blue)](https://mattdav.github.io/youtube_download/)
+
+[![Tests](https://github.com/mattdav/youtube_download/workflows/Tests/badge.svg)](https://github.com/mattdav/youtube_download/actions/workflows/tests.yml)
+
+
 ## Run Locally
 
 Clone the project
@@ -65,8 +70,6 @@ To run this project, you will need to add the following environment variables to
 `MUSIC_PATH : path to your music folder`
 
 
-
-
 ## Usage/Examples
 
 Place URLs you want to download in a text file : 
@@ -78,6 +81,13 @@ https://www.youtube.com/watch?v=URL3
 ```
 
 Select the file via the GUI when you start program.
+
+
+## Documentation
+
+For full documentation, go to [GitHub Pages](https://mattdav.github.io/youtube_download/).
+
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
