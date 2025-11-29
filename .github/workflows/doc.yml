@@ -33,12 +33,12 @@ jobs:
 
       - name: "Install Python dependencies"
         run: |
-          pip3 install uv setuptools
+          pip3 install uv setuptools sphinx-build
           uv sync
 
       - name: "Build Sphinx Doc"
         run: |
-          make html
+          uv run make html
         working-directory: docs
 
       # 3. Déploiement sur les Github Pages
