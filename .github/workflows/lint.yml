@@ -12,6 +12,6 @@ jobs:
         run: | 
           pip install uv
           uv venv --python=3.12
-          .venv/Scripts/activate
+          .venv/bin/activate
           uv sync
           uv run ruff check --fix .
