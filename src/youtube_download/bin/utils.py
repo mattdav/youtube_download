@@ -50,13 +50,13 @@ def get_music_path(config_path: str) -> str:
     :rtype: str
     """
     config = configparser.RawConfigParser()
-    try:
-        config.read(os.path.join(config_path, "config.cfg"))
-    except FileNotFoundError as e:
+    config_file = os.path.join(config_path, "config.cfg")
+    if not os.path.exists(config_file):
         logging.error(
             f"The file config.cfg doesn't exist in the directory {config_path}."
         )
-        raise e
+        raise FileNotFoundError(f"config.cfg not found in {config_path}")
+    config.read(config_file)
     try:
         music_path = config["CONFIG"]["music_path"]
     except KeyError as e:
@@ -68,7 +68,7 @@ def get_music_path(config_path: str) -> str:
     if os.path.exists(music_path):
         return music_path
     else:
-        return Path.home()
+        return str(Path.home())
 
 
 @beartype
