@@ -21,6 +21,20 @@ dependencies = [
 [project.scripts]
 youtube_download = "src.youtube_download.__main__:main"
 
+[project.optional-dependencies]
+dev = [
+    "pytest-cov>=7.0.0",
+]
+lint = [
+    "mypy>=1.19.0",
+    "ruff>=0.14.7",
+    "types-yt-dlp>=2025.11.12.20251115",
+]
+docs = [
+    "sphinx>=8.2.3",
+    "sphinx-rtd-theme>=3.0.2",
+]
+
 [tool.ruff]
 target-version = "py312"
 line-length = 88
@@ -73,17 +87,3 @@ python_version = "3.12"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
-
-[dependency-groups]
-dev = [
-    "pytest-cov>=7.0.0",
-]
-docs = [
-    "sphinx>=8.2.3",
-    "sphinx-rtd-theme>=3.0.2",
-]
-lint = [
-    "mypy>=1.19.0",
-    "ruff>=0.14.7",
-    "types-yt-dlp>=2025.11.12.20251115",
-]
