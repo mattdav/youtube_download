@@ -3,6 +3,7 @@ from pathlib import Path, WindowsPath
 
 import pytest
 from beartype.typing import Callable
+
 from src.youtube_download.bin import utils
 
 dir_path = os.path.dirname(os.path.realpath(__file__))

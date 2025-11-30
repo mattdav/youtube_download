@@ -85,7 +85,7 @@ def read_urls_from_file(file_path: str) -> list:
     :rtype: list
     """
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
+        with open(file_path, encoding="utf-8") as f:
             urls = [line.strip() for line in f if line.strip()]
             urls = process_urls(urls)
             print(urls)
