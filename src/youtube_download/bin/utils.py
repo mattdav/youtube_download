@@ -6,6 +6,7 @@ import os
 import re
 import warnings
 from pathlib import Path
+from typing import Any
 
 import yt_dlp
 from beartype import beartype
@@ -81,17 +82,21 @@ def download_url(video_url: str, music_path: str) -> None:
     :param music_path: Path to the user's music directory
     :type music_path: str
     """
-    ydl_opts = {
-        "quiet": True,
-        "no-warnings": True,
-        "outtmpl": str(music_path) + "/%(title)s.%(ext)s",
-        "postprocessors": [
-            {  # Post-process to convert to MP3
-                "key": "FFmpegExtractAudio",
-                "preferredcodec": "mp3",  # Convert to mp3
-                "preferredquality": "0",  # '0' means best quality
-            }
-        ],
-    }
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([video_url])
+    try:
+        ydl_opts: dict[str, Any] = {
+            "quiet": True,
+            "no-warnings": True,
+            "outtmpl": f"{music_path}/%(title)s.%(ext)s",
+            "postprocessors": [
+                {  # Post-process to convert to MP3
+                    "key": "FFmpegExtractAudio",
+                    "preferredcodec": "mp3",  # Convert to mp3
+                    "preferredquality": "0",  # '0' means best quality
+                }
+            ],
+        }
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:  # type: ignore[arg-type]
+            ydl.download([video_url])
+    except Exception as e:
+        log.error(f"Failed to download {video_url}", exc_info=True)
+        raise e

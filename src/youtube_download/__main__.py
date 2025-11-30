@@ -5,10 +5,21 @@ import logging
 import os
 import threading
 import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
+from tkinter import Tk, filedialog, messagebox, ttk
 
 from beartype import beartype
-from bin.utils import download_url, get_music_path, validate_url
+
+from .bin.utils import download_url, get_music_path, validate_url
+
+
+class AppWindow(Tk):
+    """Application window with file path tracking."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.file_path: str | None = None
+        self.title("Télécharger des musiques depuis YouTube")
+        self.geometry("500x250")
 
 
 @beartype
@@ -30,7 +41,7 @@ def get_folder_path(foldername: str) -> str:
     return folder_path
 
 
-def open_file_dialog():
+def open_file_dialog() -> None:
     """Open a GUI to select the text file containing URLs."""
     file_path = filedialog.askopenfilename(
         title="Sélectionner le fichier à traiter",
@@ -46,7 +57,7 @@ def open_file_dialog():
         )
 
 
-def process_urls(urls: list) -> list:
+def process_urls(urls: list[str]) -> list[str]:
     """
     Validate if URLs are correct youtube ones and rewrite them if
     they contain playlist link.
@@ -75,7 +86,7 @@ def process_urls(urls: list) -> list:
 
 
 @beartype
-def read_urls_from_file(file_path: str) -> list:
+def read_urls_from_file(file_path: str) -> list[str]:
     """
     Read file and return list of URLs.
 
@@ -95,7 +106,7 @@ def read_urls_from_file(file_path: str) -> list:
         return []
 
 
-def download_with_progress(urls: list, music_path: str):
+def download_with_progress(urls: list[str], music_path: str) -> None:
     """
     Download URLs and update the progress bar accordingly.
 
@@ -122,7 +133,7 @@ def download_with_progress(urls: list, music_path: str):
         start_button.config(state=tk.NORMAL)
 
 
-def process_downloads(music_path: str):
+def process_downloads(music_path: str) -> None:
     """
     Start the download process in a separate thread.
 
@@ -156,9 +167,7 @@ if __name__ == "__main__":
     )
     config_path = get_folder_path("config")
     music_path = get_music_path(config_path)
-    window = tk.Tk()
-    window.title("Télécharger des musiques depuis YouTube")
-    window.geometry("500x250")
+    window = AppWindow()
     file_frame = ttk.Frame(window, padding=10)
     file_frame.pack(fill=tk.X)
     open_button = ttk.Button(
