@@ -8,8 +8,11 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.12"
-      - name: "Install Python dependencies and run ruff lint check"
+      - name: Run tests with coverage
         run: |
           pip install uv
-          uv sync
-          uv run pytest -v
+          uv pip install -e ".[dev]"
+          uv run pytest --cov=src/youtube_download \
+                 --cov-report=term-missing \
+                 --cov-report=xml \
+                 --cov-fail-under=80

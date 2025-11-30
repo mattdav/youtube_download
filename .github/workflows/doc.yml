@@ -34,7 +34,7 @@ jobs:
       - name: "Install Python dependencies"
         run: |
           pip3 install uv setuptools
-          uv sync
+          uv pip install -e ".[docs]"
 
       - name: "Build Sphinx Doc"
         run: |

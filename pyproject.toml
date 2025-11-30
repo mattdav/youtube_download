@@ -1,15 +1,87 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
 [project]
 name = "youtube-download"
+authors = [
+  {name = "Matthieu Daviaud", email = "matthieu.daviaud@gmail.com"},
+]
 version = "0.2.0"
 description = "Python package to download youtube music from a list of urls."
 readme = "README.md"
+license = {text = "MIT"}
 requires-python = ">=3.12"
 dependencies = [
     "beartype>=0.22.6",
-    "pytest>=9.0.1",
-    "ruff>=0.14.7",
-    "sphinx>=8.2.3",
-    "sphinx-rtd-theme>=3.0.2",
     "tk>=0.1.0",
     "yt-dlp>=2025.11.12",
+]
+
+[project.scripts]
+youtube_download = "src.youtube_download.__main__:main"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+indent-width = 4
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "src/youtube_download"]
+addopts = [
+    "--doctest-modules",
+    "--cov=src/youtube_download",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+pythonpath = ["."]
+
+[tool.coverage.run]
+source = ["src/youtube_download"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+exclude_lines = [
+    "if __name__ == .__main__.:",
+    "pragma: no cover",
+    "raise NotImplementedError",
+]
+skip_empty = true
+
+[tool.mypy]
+python_version = "{{cookiecutter.python_version}}"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.0",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.14.7",
+    "types-yt-dlp>=2025.11.12.20251115",
+]
+docs = [
+    "sphinx>=8.2.3",
+    "sphinx-rtd-theme>=3.0.2",
 ]
