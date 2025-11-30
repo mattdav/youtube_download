@@ -12,5 +12,8 @@ jobs:
         run: | 
           pip install uv
           uv venv
-          uv pip install -e .[dev]
+          uv pip install -e .[lint]
           uv run ruff check --fix .
+          uv run ruff format --check --fix .
+          uv run mypy src/youtube_download
+          
