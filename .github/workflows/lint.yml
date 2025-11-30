@@ -11,5 +11,6 @@ jobs:
       - name: "Install Python dependencies and run ruff lint check"
         run: | 
           pip install uv
-          uv sync
+          uv venv
+          uv pip install -e .[dev]
           uv run ruff check --fix .

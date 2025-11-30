@@ -11,7 +11,8 @@ jobs:
       - name: Run tests with coverage
         run: |
           pip install uv
-          uv pip install -e ".[dev]"
+          uv venv
+          uv pip install -e .[dev]
           uv run pytest --cov=src/youtube_download \
                  --cov-report=term-missing \
                  --cov-report=xml \
